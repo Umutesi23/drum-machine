@@ -45,25 +45,27 @@ export default function Home() {
   const [currentSound, setSound] = useState("");
   function soundHandler(e: any) {
     cPower ? setSound(e.target.value) : setSound("");
-    e.target.value == "Heater1"
-      ? Heater1.play()
-      : e.target.value == "Heater2"
-      ? Heater2.play()
-      : e.target.value == "Heater3"
-      ? Heater3.play()
-      : e.target.value == "Heater4"
-      ? Heater4.play()
-      : e.target.value == "Clap"
-      ? Clap.play()
-      : e.target.value == "OpenHH"
-      ? OpenHH.play()
-      : e.target.value == "PunchyKick"
-      ? PunchyKick.play()
-      : e.target.value == "SideStick"
-      ? SideStick.play()
-      : e.target.value == "Snare"
-      ? Snare.play()
-      : "";
+    if (cPower) {
+      e.target.value == "Heater1"
+        ? Heater1.play()
+        : e.target.value == "Heater2"
+        ? Heater2.play()
+        : e.target.value == "Heater3"
+        ? Heater3.play()
+        : e.target.value == "Heater4"
+        ? Heater4.play()
+        : e.target.value == "Clap"
+        ? Clap.play()
+        : e.target.value == "OpenHH"
+        ? OpenHH.play()
+        : e.target.value == "PunchyKick"
+        ? PunchyKick.play()
+        : e.target.value == "SideStick"
+        ? SideStick.play()
+        : e.target.value == "Snare"
+        ? Snare.play()
+        : "";
+    }
   }
 
   return (
@@ -161,6 +163,7 @@ export default function Home() {
               id="airplane-mode"
               className="data-[state=checked]:bg-[gray] data-[state=unchecked]:bg-black"
               defaultChecked
+              onCheckedChange={powerHandler}
             />
           </div>
           <br></br>
