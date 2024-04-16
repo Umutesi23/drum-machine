@@ -8,8 +8,6 @@ import { Slider } from "@/components/ui/slider";
 import { useState } from "react";
 //IMPORTS
 export default function Home() {
-  const volumeSlider = document.getElementById("volume-slider");
-
   const Heater1 = new Audio(
     "https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"
   );
