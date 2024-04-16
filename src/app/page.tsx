@@ -6,7 +6,6 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { useState } from "react";
-import useSound from "use-sound";
 //IMPORTS
 export default function Home() {
   const volumeSlider = document.getElementById("volume-slider");
