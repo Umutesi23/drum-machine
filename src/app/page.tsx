@@ -6,35 +6,85 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { useState } from "react";
+
+// const Heater1 = new Audio(
+//   "https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"
+// );
+// const Heater2 = new Audio(
+//   "https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"
+// );
+// const Heater3 = new Audio(
+//   "https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3"
+// );
+// const Heater4 = new Audio(
+//   "https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3"
+// );
+// const Clap = new Audio(
+//   "https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3"
+// );
+// const OpenHH = new Audio(
+//   "https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3"
+// );
+// const PunchyKick = new Audio(
+//   "https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3"
+// );
+// const SideStick = new Audio(
+//   "https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"
+// );
+// const Snare = new Audio(
+//   "https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"
+// );
+
+const SOUNDS = [
+  {
+    url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3",
+    letter: "Q",
+    name: " Heater 1",
+  },
+  {
+    url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3",
+    letter: "W",
+    name: " Heater 2",
+  },
+  {
+    url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3",
+    letter: "E",
+    name: " Heater 3",
+  },
+  {
+    url: "  https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3",
+    letter: "A",
+    name: " Heater 4",
+  },
+  {
+    url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3",
+    letter: "S",
+    name: " Clap",
+  },
+  {
+    url: "https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3",
+    letter: "D",
+    name: " Open HH",
+  },
+  {
+    url: "https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3",
+    letter: "Z",
+    name: " Punchy Kick",
+  },
+  {
+    url: "https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3",
+    letter: "X",
+    name: " Side Stick",
+  },
+  {
+    url: " https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3",
+    letter: "C",
+    name: " Snare",
+  },
+];
+
 //IMPORTS
 export default function Home() {
-  const Heater1 = new Audio(
-    "https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"
-  );
-  const Heater2 = new Audio(
-    "https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"
-  );
-  const Heater3 = new Audio(
-    "https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3"
-  );
-  const Heater4 = new Audio(
-    "https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3"
-  );
-  const Clap = new Audio(
-    "https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3"
-  );
-  const OpenHH = new Audio(
-    "https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3"
-  );
-  const PunchyKick = new Audio(
-    "https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3"
-  );
-  const SideStick = new Audio(
-    "https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"
-  );
-  const Snare = new Audio(
-    "https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"
-  );
   //power on off
   const [cPower, setPower] = useState(true);
   function powerHandler() {
@@ -43,30 +93,39 @@ export default function Home() {
   }
   //the name of sound
   const [currentSound, setSound] = useState("");
-  function soundHandler(e: any) {
-    cPower ? setSound(e.target.value) : setSound("");
-    if (cPower) {
-      e.target.value == "Heater1"
-        ? Heater1.play()
-        : e.target.value == "Heater2"
-        ? Heater2.play()
-        : e.target.value == "Heater3"
-        ? Heater3.play()
-        : e.target.value == "Heater4"
-        ? Heater4.play()
-        : e.target.value == "Clap"
-        ? Clap.play()
-        : e.target.value == "OpenHH"
-        ? OpenHH.play()
-        : e.target.value == "PunchyKick"
-        ? PunchyKick.play()
-        : e.target.value == "SideStick"
-        ? SideStick.play()
-        : e.target.value == "Snare"
-        ? Snare.play()
-        : "";
-    }
-  }
+
+  // function soundHandler(e: any) {
+  //   cPower ? setSound(e.target.value) : setSound("");
+  //   if (cPower) {
+  //     e.target.value == "Heater1"
+  //       ? Heater1.play()
+  //       : e.target.value == "Heater2"
+  //       ? Heater2.play()
+  //       : e.target.value == "Heater3"
+  //       ? Heater3.play()
+  //       : e.target.value == "Heater4"
+  //       ? Heater4.play()
+  //       : e.target.value == "Clap"
+  //       ? Clap.play()
+  //       : e.target.value == "OpenHH"
+  //       ? OpenHH.play()
+  //       : e.target.value == "PunchyKick"
+  //       ? PunchyKick.play()
+  //       : e.target.value == "SideStick"
+  //       ? SideStick.play()
+  //       : e.target.value == "Snare"
+  //       ? Snare.play()
+  //       : "";
+  //   }
+  // }
+
+  const onPlaySoundHandler = (url: string, name: string) => {
+    setSound(name);
+
+    const audio = new Audio(url);
+
+    audio.play();
+  };
 
   return (
     <main
@@ -77,7 +136,7 @@ export default function Home() {
         className=" border-[0.7vh] m-auto h-[40vh] w-[45vw] border-[orange] bg-neutral-400 flex"
         id="display"
       >
-        <div className="  w-[60%] h-[100%] flex flex-wrap	p-[2vw] gap-[0.6vw]">
+        {/* <div className="w-[60%] h-[100%] flex flex-wrap	p-[2vw] gap-[0.6vw]">
           <Button
             className=" font-semibold text-[1.5vw] bg-[gray] w-[30%] h-[30%] drum-pad"
             id="Q"
@@ -151,6 +210,20 @@ export default function Home() {
           >
             C
           </Button>
+        </div> */}
+
+        <div className="w-[60%] h-[100%] grid grid-cols-3	p-[2vw] gap-[0.6vw]">
+          {SOUNDS.map((sound, index) => (
+            <Button
+              key={index}
+              className="font-semibold text-[1.5vw] bg-[gray] h-20 drum-pad"
+              id="Q"
+              value="Heater1"
+              onClick={() => onPlaySoundHandler(sound.url, sound.name)}
+            >
+              {sound.letter}
+            </Button>
+          ))}
         </div>
 
         <div className=" block p-[0.8vw] w-[40%]">
